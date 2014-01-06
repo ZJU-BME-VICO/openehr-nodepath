@@ -1,21 +1,31 @@
 package edu.zju.bme.openehr.nodepath.service;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import edu.zju.bme.openehr.nodepath.model.CoarseNodePath;
-import edu.zju.bme.openehr.nodepath.model.FineNodePath;
+import edu.zju.bme.openehr.nodepath.model.CoarseNodePathEntity;
 
 @WebService
 public interface NodePathPersistence {
 
 	@WebMethod
-	int insert(String[] dadls);
+	int insert(List<String> dadls, List<String> adls);
 
 	@WebMethod
-	CoarseNodePath[] selectCoarseNodePathByObjectUids(String[] objectUids);
+	int delete(String adl);
 
 	@WebMethod
-	FineNodePath[] selectFineNodePathByObjectUids(String[] objectUids);
+	List<CoarseNodePathEntity> selectCoarseNodePathByObjectUids(List<String> objectUids);
+
+//	@WebMethod
+//	List<CoarseNodePathEntity> selectCoarseNodePathByPathValues(
+//			@XmlJavaTypeAdapter(PathValueMapAdapter.class) Map<String, String> pathValues);
+
+	@WebMethod
+	List<CoarseNodePathEntity> selectCoarseNodePathByPathValues(List<String> paths, List<String> values);
 
 }

@@ -1,14 +1,22 @@
 package edu.zju.bme.openehr.nodepath.dao;
 
-import edu.zju.bme.openehr.nodepath.model.CoarseNodePath;
-import edu.zju.bme.openehr.nodepath.model.FineNodePath;
+import java.util.List;
+import java.util.Map;
+
+import edu.zju.bme.openehr.nodepath.model.CoarseNodePathEntity;
 
 public interface NodePathPersistenceDao {
 
-	int insert(String[] dadls);
+	int insert(List<String> dadls, List<String> adls);
+
+	int delete(String adl);
 	
-	CoarseNodePath[] selectCoarseNodePathByObjectUids(String[] objectUids);
+	List<CoarseNodePathEntity> selectCoarseNodePathByObjectUids(List<String> objectUids);
+
+	List<CoarseNodePathEntity> selectCoarseNodePathByIds(List<Integer> ids);
 	
-	FineNodePath[] selectFineNodePathByObjectUids(String[] objectUids);
+//	List<CoarseNodePathEntity> selectCoarseNodePathByPathValues(Map<String, String> pathValues);
+
+	List<CoarseNodePathEntity> selectCoarseNodePathByPathValues(List<String> paths, List<String> values);
 
 }
