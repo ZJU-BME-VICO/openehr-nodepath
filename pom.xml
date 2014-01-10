@@ -151,6 +151,11 @@
 			<version>1.3</version>
 		</dependency>
 		<dependency>
+			<groupId>org.jadira.usertype</groupId>
+			<artifactId>usertype.jodatime</artifactId>
+			<version>2.0.1</version>
+		</dependency>  
+		<dependency>
 			<groupId>openehr</groupId>
 			<artifactId>adl-parser</artifactId>
 			<version>${openEHR.version}</version>
@@ -179,6 +184,11 @@
 			<groupId>edu.zju.bme</groupId>
 			<artifactId>snippet-java</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqljdbc4</artifactId>
+			<version>4.0</version>
 		</dependency>
 	</dependencies>
 </project>
