@@ -316,6 +316,11 @@ public class NodePathPersistenceDaoImpl implements NodePathPersistenceDao {
 		
 		Iterable<Field> fields = Reflector.INSTANCE.getFieldsUpTo(obj.getClass(), null);
 		for (Field field : fields) {
+			if (field.getName().compareTo("ROOT") == 0 ||
+					field.getName().compareTo("PATH_SEPARATOR") == 0) {
+				continue;
+			}
+			
 			field.setAccessible(true);
 			String fieldPath = nodePath + "/" + field.getName();
 			CoarseNodePathIndex coarseNodePathIndex = new CoarseNodePathIndex();
@@ -327,7 +332,7 @@ public class NodePathPersistenceDaoImpl implements NodePathPersistenceDao {
 					field.getType() == Date.class || 
 					field.getType() == Boolean.class) {
 				if (field.get(obj) == null) {
-					coarseNodePathIndex.setValueString(null);
+					continue;
 				} else {
 					coarseNodePathIndex.setValueString(field.get(obj).toString());
 				}		
