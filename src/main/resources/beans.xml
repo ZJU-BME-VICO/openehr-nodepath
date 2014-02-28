@@ -25,9 +25,9 @@
 		id="NodePathPersistence"
 		implementor="edu.zju.bme.openehr.nodepath.service.NodePathPersistenceImpl" 
 		address="/NodePathPersistence">
-		<jaxws:features>
-			<wsa:addressing xmlns:wsa="http://cxf.apache.org/ws/addressing" />
-		</jaxws:features>
+<!-- 		<jaxws:features> -->
+<!-- 			<wsa:addressing xmlns:wsa="http://cxf.apache.org/ws/addressing" /> -->
+<!-- 		</jaxws:features> -->
 	</jaxws:endpoint>
 	
 	<context:annotation-config />
