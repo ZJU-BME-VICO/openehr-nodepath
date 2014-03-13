@@ -12,6 +12,7 @@ public class CoarseNodePathIndex {
 
 	private Integer id;
 	private Integer referenceId;
+	private String archetypeId;
 	private String path;
 	private Integer valueType;
 	private String valueString;
@@ -36,6 +37,14 @@ public class CoarseNodePathIndex {
 
 	public void setReferenceId(Integer referenceId) {
 		this.referenceId = referenceId;
+	}
+
+	public String getArchetypeId() {
+		return archetypeId;
+	}
+
+	public void setArchetypeId(String archetypeId) {
+		this.archetypeId = archetypeId;
 	}
 
 	public String getPath() {

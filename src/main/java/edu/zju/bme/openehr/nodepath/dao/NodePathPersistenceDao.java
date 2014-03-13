@@ -11,6 +11,8 @@ public interface NodePathPersistenceDao {
 
 	int delete(String adl);
 	
+	List<CoarseNodePathEntity> select(String aql);
+	
 	List<CoarseNodePathEntity> selectCoarseNodePathByObjectUids(List<String> objectUids);
 
 	List<CoarseNodePathEntity> selectCoarseNodePathByIds(List<Integer> ids);

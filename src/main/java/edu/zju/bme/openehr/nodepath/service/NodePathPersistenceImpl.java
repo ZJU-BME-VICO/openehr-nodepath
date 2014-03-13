@@ -31,9 +31,16 @@ public class NodePathPersistenceImpl implements NodePathPersistence {
 	}
 
 	@Override
-	public int delete(String adl) {
+	public int delete(String aql) {
 		
-		return nodePathPersistenceDao.delete(adl);
+		return nodePathPersistenceDao.delete(aql);
+
+	}
+
+	@Override
+	public List<CoarseNodePathEntity> select(String aql) {
+		
+		return nodePathPersistenceDao.select(aql);
 
 	}
 

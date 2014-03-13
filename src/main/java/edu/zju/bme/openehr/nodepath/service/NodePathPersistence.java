@@ -19,6 +19,9 @@ public interface NodePathPersistence {
 	int delete(String adl);
 
 	@WebMethod
+	List<CoarseNodePathEntity> select(String aql);
+
+	@WebMethod
 	List<CoarseNodePathEntity> selectCoarseNodePathByObjectUids(List<String> objectUids);
 
 //	@WebMethod

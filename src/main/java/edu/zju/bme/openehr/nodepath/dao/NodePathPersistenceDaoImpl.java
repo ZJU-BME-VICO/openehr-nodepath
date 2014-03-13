@@ -145,6 +145,44 @@ public class NodePathPersistenceDaoImpl implements NodePathPersistenceDao {
 		}
 
 	}
+
+    @Override
+	public List<CoarseNodePathEntity> select(String aql) {
+
+		logger.info("select");
+
+		try {
+
+			long startTime = System.currentTimeMillis();
+
+			Session s = sessionFactory.getCurrentSession();
+
+			Query query = s.createQuery(aql);
+			
+			@SuppressWarnings("unchecked")
+			List<CoarseNodePathIndex> listCoarseNodePathIndex = query.list();
+			
+			List<Integer> coarseNodePathEntityIds = new ArrayList<>();
+			for (CoarseNodePathIndex coarseNodePathIndex : listCoarseNodePathIndex) {
+				if (coarseNodePathEntityIds.contains(coarseNodePathIndex.getReferenceId())) {
+					continue;
+				}
+				coarseNodePathEntityIds.add(coarseNodePathIndex.getReferenceId());
+			}
+
+			List<CoarseNodePathEntity> listCoarseNodePathEntity = selectCoarseNodePathByIds(coarseNodePathEntityIds);
+			
+			long endTime = System.currentTimeMillis();
+			logger.info("aql execute time (ms) : " + (endTime - startTime));
+			
+			return listCoarseNodePathEntity;
+			
+		} catch (Exception e) {
+			logger.error(e);
+			return null;
+		}
+    	
+    }
     
     @Override
     public List<CoarseNodePathEntity> selectCoarseNodePathByObjectUids(List<String> objectUids) {
@@ -253,6 +291,8 @@ public class NodePathPersistenceDaoImpl implements NodePathPersistenceDao {
 		logger.info("selectCoarseNodePathByPathValues");
 
 		try {
+
+			long startTime = System.currentTimeMillis();
 			
 			String queryString = "from CoarseNodePathIndex as c where ";
 
@@ -285,6 +325,10 @@ public class NodePathPersistenceDaoImpl implements NodePathPersistenceDao {
 			}
 
 			List<CoarseNodePathEntity> listCoarseNodePathEntity = selectCoarseNodePathByIds(coarseNodePathEntityIds);
+			
+			long endTime = System.currentTimeMillis();
+			logger.info("aql execute time (ms) : " + (endTime - startTime));
+			
 			return listCoarseNodePathEntity;
 			
 		} catch (Exception e) {
