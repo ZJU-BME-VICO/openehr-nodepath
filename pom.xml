@@ -17,7 +17,7 @@
 		<hibernate.version>4.3.0.Final</hibernate.version>
 		<cxf.version>2.7.8</cxf.version>
 		<aspectj.version>1.7.4</aspectj.version>
-		<openEHR.version>1.0.5.1</openEHR.version>
+		<openEHR.version>1.0.5.3</openEHR.version>
 		<tomcat.port>9094</tomcat.port>
 		<tomcat.server>localhost</tomcat.server>
 		<dbserver>localhost</dbserver>
@@ -52,8 +52,8 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>1.8</source>
+						<target>1.8</target>
 						<encoding>${project.build.sourceEncoding}</encoding>
 					</configuration>
 				</plugin>
@@ -194,12 +194,12 @@
 		<dependency>
 			<groupId>edu.zju.bme</groupId>
 			<artifactId>snippet-java</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>sqljdbc4</artifactId>
-			<version>4.0</version>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>6.1.0.jre8</version>
 		</dependency>
 	</dependencies>
 </project>

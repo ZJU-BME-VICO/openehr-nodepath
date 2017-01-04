@@ -17,6 +17,7 @@ import org.hibernate.property.Setter;
 import org.openehr.am.archetype.Archetype;
 import org.openehr.am.archetype.constraintmodel.CObject;
 import org.openehr.build.RMObjectBuilder;
+import org.openehr.build.RMObjectBuildingException;
 import org.openehr.build.SystemValue;
 import org.openehr.rm.common.archetyped.Locatable;
 import org.openehr.rm.datatypes.text.CodePhrase;
@@ -58,14 +59,14 @@ public enum ArchetypeManipulator {
 	}
 	
 	public void setArchetypeValue(Locatable loc, Map<String, Object> values, Archetype archetype) 
-			throws InstantiationException, IllegalAccessException {
+			throws InstantiationException, IllegalAccessException, RMObjectBuildingException {
 		for (String path : values.keySet()) {
 			setArchetypeValue(loc, path, values.get(path), archetype);
 		}
 	}
 	
 	public void setArchetypeValue(Locatable loc, String propertyPath, Object propertyValue, Archetype archetype) 
-			throws InstantiationException, IllegalAccessException {
+			throws InstantiationException, IllegalAccessException, RMObjectBuildingException {
 
 		Map<String, CObject> pathNodeMap = archetype.getPathNodeMap();
 		String nodePath = getArchetypeNodePath(archetype, propertyPath);
